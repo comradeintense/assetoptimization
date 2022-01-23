@@ -1,2 +1,1 @@
-theme: jekyll-theme-minimal
-title: [Short guide on performance related tips and tricks for asset creation]
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
