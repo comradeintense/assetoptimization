@@ -6,29 +6,29 @@ layout: default
 ## Intro
 Greetings! I am “**ComradeIntense**” and I am here to show you a couple of tips and tricks on how to better optimize in terms of performance your assets for **Cities Skylines**.  
 
-What you will read further on, are things that I learned on my own in this journey, or things that have been taught to me by others (mostly my mentor -  **Ronyx69**) or at work, and I just want to pass the knowledge to others as well. If there is something you disagree with in this guide, don’t hesitate to contact and correct me, I am learning as well.
+What you will read further on, are things that I learned on my own in this journey, or things that have been taught to me by others (mostly my mentor -  **Ronyx69**) or at work, and I just want to pass the knowledge to others as well. If there is something you disagree with in this guide, don’t hesitate to contact and correct me, I am learning as well.  
 
-This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info)), but you are here because you are interested in knowing **how your decisions affect the performance of the game for others, and what can you do about it**.
+This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info)), but you are here because you are interested in knowing **how your decisions affect the performance of the game for others, and what can you do about it**.  
 
-I will write short and to the point as much as I can, but there will be a few nerdy parts here and there, which are important for you to understand, so take your time and don’t skip anything.
+I will write short and to the point as much as I can, but there will be a few nerdy parts here and there, which are important for you to understand, so take your time and don’t skip anything.  
 
-Let’s go.
+Let’s go.  
 
 ## Part I
 
 ### 1) What are draw calls?
 
 
-In simple terms, a draw call is an instruction that the CPU tells the GPU to do. When you load a mesh, the CPU will calculate the position of **each vertex** of the mesh in the world space and the material(s), after which it says to the GPU:
+In simple terms, a draw call is an instruction that the CPU tells the GPU to do. When you load a mesh, the CPU will calculate the position of **each vertex** of the mesh in the world space and the material(s), after which it says to the GPU:  
 
 ```"Hey almighty 1050 GPU, at position (x,y,z) in the world, there is a vertex, also here and here and here, and all of those vertices make this entire mesh. Between those vertices you need to apply this material at this position on the UV map, and normal map and so on... and draw it on the screen!”```  
- _Discussion between CPU and GPU (This is obviously a very simple explanation)_.
+ _Discussion between CPU and GPU (This is obviously a very simple explanation)_.  
 
-Naturally, it makes sense that **the more vertices that need to be calculated or the more draw calls from a lot of meshes = more processing time.**
+Naturally, it makes sense that **the more vertices that need to be calculated or the more draw calls from a lot of meshes = more processing time.**  
 
-Problems arise when there is a bottleneck. For example you have a very powerful GPU but your CPU is garbage. You load your city and in that scene there are 8738423 meshes (random number I pulled out of my ass) consisting of buildings, props, cims, vehicles, and so on.
+Problems arise when there is a bottleneck. For example you have a very powerful GPU but your CPU is garbage. You load your city and in that scene there are 8738423 meshes (random number I pulled out of my ass) consisting of buildings, props, cims, vehicles, and so on.  
 
-The CPU has to calculate all of that for each single mesh (and a draw call for each material) and give instructions to the GPU of what to render on your screen. The bottleneck arises in the fact that the GPU can handle all this without issues, but the CPU will start lagging behind, resulting in idle times in the GPU where it doesn't do anything. 
+The CPU has to calculate all of that for each single mesh (and a draw call for each material) and give instructions to the GPU of what to render on your screen. The bottleneck arises in the fact that the GPU can handle all this without issues, but the CPU will start lagging behind, resulting in idle times in the GPU where it doesn't do anything.  
 
 Here is a good image to describe that:
 
