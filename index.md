@@ -65,6 +65,7 @@ So it is important to be **mindful** about your triangle/vertex count but I woul
 
 In games there is a world origin point which is x,y,z = 0,0,0. From there, all the vertices that form meshes get calculated relative to the world origin. Sometimes, game developers calculate the position of vertices relative to the camera, or sometimes they just shift the world origin. I have no idea how Cities Skylines does it (probably center of map is (0,0,0)), but that's irrelevant, just bear with me.
 
+![worldorigin](images/vertexloss.png)
 
 When I talked in **Part I** that when a draw call is made for a mesh, what happens is that each vertex is calculated in the world space, aka where it is positioned in space, relative to 0,0,0 (world origin), and then it is sent to the GPU to draw it on your screen.
 
