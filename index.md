@@ -75,16 +75,24 @@ The further away the vertices need to be calculated from the world origin (0,0,0
 
 In our case, the vertex in the middle of our mesh is **not connected to anything**. The CPU will keep trying to calculate it's exact position but after a while it will start losing precision. When that happens (an exaggerated example) can be seen here:
 
+![vert2](images/vert2.png)
+
+![vert3](images/vert3.png)
+
+
 
 Since the vertex is not connected to anything else, it will start making holes in the mesh and that will turn into different shading problems / holes where light pokes through / bad artefacts and all kinds of other weird glitches.
 
 **So how to fix this?**
 You must have your mesh "closed" so to speak. In our case, that vertex should be connected somewhere, for example like this:
 
+![vert4](images/vert4.png)
+
 Now even with the precision loss, the mesh is still connected, and at worst, the vertex will just shift it’s position a tiny tiny tiny bit, but there won't be any **visible** errors at all.
 
 If however there is no possible way for you to connect the vertices, you can just overlap the vertex a tiny bit with the face next to it like this:
 
+![vert5](images/vert5.png)
 
 (Exaggerated example, but I moved the vertex to the right, to overlap the face next to it). It is not an ideal solution and you should do this only if you have the same texture, so the overlapped faces won't Z-fight and create annoying flickering.
 
