@@ -98,7 +98,7 @@ If however there is no possible way for you to connect the vertices, you can jus
 
 So, you should keep your vertices connected, even if it increases the amount of triangles. Also, make sure to merge your vertices.
 
-As a bonus to further drill this idea inside your brain, check this video https://youtu.be/Xfh3oTIqJW8?t=305 from the game Minecraft, when it was in an old version. The guy was testing what happens if you teleport further and further away from the world origin.
+As a bonus to further drill this idea inside your brain, check this video [https://youtu.be/Xfh3oTIqJW8?t=305](https://youtu.be/Xfh3oTIqJW8?t=305) from the game **Minecraft**, when it was in an old version. The guy was testing what happens if you teleport further and further away from the world origin.
 Because he was sooooooooo far away from the world origin, the blocks couldn't be rendered properly anymore (the cpu was having a hard time figuring out the exact position of each of the 4 vertices that make a block) and you can clearly see how bad it gets. I don't know the exact solution to how Minecraft fixed this, but most likely the world origin is shifted constantly (my guess).
 
 ### 6) Overdraw
@@ -111,32 +111,40 @@ I promised I won't get into technical things (even though Overdraw is quite inte
 
 Here is a great example:
 
+![overdraw](images/overdraw.png)
+
 In this image (imagine this is a 3d rendered scene), the CPU would make draw calls for the environment ( the couple in the back ), and draw calls for the glasses. After that, the GPU has to render the pixels on your screen, and to do that, it would take a lot of time to render BOTH the couple AND the glass lens (overlapping pixels on the right lens of the glasses).
 
 **So what can you do about overdraw?**
 
 Imagine you have this scenario, where you have this building which is made with two 'shapes', the tall one, and then the long one that goes through the main tall one. To avoid making a lot of cuts and saving on triangles, you decide to go through the main building like this:
 
+![ov1](images/ov1.png)
+
 Seen from below:
 
+![ov2](images/ov2.jpg)
 
 In this case, the red and blue area on both buildings are OVERDRAWN, and **you must cut them out because of overdraw**. Basically, the GPU has to render those pixels (which you will never see), marked in red from the tall building and blue from the main building.
 
 To avoid overdraw, you should cut your model like this, by cutting out the big area which the camera doesn't see, and preventing the GPU to work more than needed:
 
+![ov3](images/ov3.png)
 
 Exploded view for better understanding:
 
-
+![ov4](images/ov4.png)
 
 _(This is just an example specifically to describe overdraw. The mesh is not properly triangulated, and there are a lot of Ngons)_
 
-Main takeaway: d**on't make the GPU render pixels which are not seen to the camera!**
+Main takeaway: **don't make the GPU render pixels which are not seen to the camera!**
+
 Another example to illustrate the overdraw. You have this image of a sword and you will add it in a game. 
 
+![ov5](images/ov5.png)
 
 **What would be better ?**
-To go with Fig1 where you have only 2 triangles or go with Fig2 where you have 13 triangles ? In the image, the red part is alpha, transparent.
+To go with **Fig1** where you have only 2 triangles or go with **Fig2** where you have 13 triangles ? In the image, the red part is alpha, transparent.
 
 If you understood everything so far, the clear answer is figure 2. The increase in triangles doesn't matter, what you absolutely want however, is to reduce the overdraw! Even though the pixels in the red area are transparent, they are "there" so to speak. The CPU will do a draw call for that shape and the GPU will STILL calculate them, just that they will be turned invisible. Waste of time and memory bandwidth.
 
@@ -150,11 +158,13 @@ The close relative of Overdraw is **overshading**, and again, it is a performanc
 
 Here is an explanation:
 
+![overshade](images/overshading.jpg)
 
 On a building I did some time ago, I had this dilemma. I wanted to save on triangles so I merged all the vertices on the top and bottom (the most right side face). Technically, you won't see any issues with this ingame. However, you are making the GPU work harder for something which can be simplified by adding a few extra cuts. Sure, the cost will be more triangles, but as already explained it doesn't matter that much compared to the wasted work the GPU has to put in.
 
 Here is the building and to clean it up I came with this solution, and everything is connected properly (before and after):
-
+![tr1](images/tr1.png)
+![tr2](images/tr2.png)
 
 An argument can be made about the fact that modern GPUs are insanely fast at calculating this, however, I see it as **sweeping dirt under the rug**. It literally takes very few minutes to come up with a better topology and solve this issue, so as much as possible try to avoid having on your mesh long thin triangles.
 
@@ -177,6 +187,7 @@ When the textures get loaded, the game engine generates mip maps for those textu
 
 Here is an example of a mip map chain:
 
+![mm](images/mm.png)
 
 This happens automatically by the game engine, you don't have to do anything.
 
@@ -204,6 +215,8 @@ _alpha + _color + _illumination together (ACI)
 _normal + _specular together (XYS)
 
 You can see a good chart made by **Ronyx69** to see what size those compressed textures will have:
+
+![sizes](images/sizes.png)
 
 _above chart is in MB_
 
