@@ -43,19 +43,19 @@ Whenever you model an asset keep this in mind:<br><br>
 fewer triangles = increased performance<br><br>
 fewer triangles = fewer vertices that need to be calculated by the GPU<br><br>
 calculating/processing vertices is **expensive**.<br><br>
-<br><br>
-Realistically speaking, modern GPUs can render scenes with thousands of triangles without many issues (explained a bit in next topic), however that shouldn’t give you an excuse to model everything, every single little detail, because you have to see the big picture: if everyone is ignoring that, the performance hit would be quite significant, so whenever you model something, try to keep the tris count on the lower end and **don’t use more triangles than necessary**.
 <br>
+Realistically speaking, modern GPUs can render scenes with thousands of triangles without many issues (explained a bit in next topic), however that shouldn’t give you an excuse to model everything, every single little detail, because you have to see the big picture: if everyone is ignoring that, the performance hit would be quite significant, so whenever you model something, try to keep the tris count on the lower end and **don’t use more triangles than necessary**.
+<br><br>
 **Ronyx69** said it well: _“It doesn’t matter that your asset is 5k or 25k tris, -**in isolation by itself**-, but you are a drop in the ocean together with all other assets. Since there's hundreds of assets on screen, 1k tris here or there for each asset would make a difference”._
 
 ### 3) Difference between Cities Skylines and other games
 
 In other games, developers use different tricks to increase performance. For example, what do you think is easier for the CPU/GPU to render? 1 single mesh with 100.000 triangles, or 100 meshes with 1000 triangles each? The answer is 1 single mesh because you do **1 draw call for the mesh and 1 draw call for the material**. Among many little ‘hacks’, game developers combine multiple meshes together into 1.
-<br>
+<br><br>
 Also, in other games, developers optimize the scenes, by using higher tris count for meshes that are close to the player/camera but very few triangles for meshes that are in the background, sometimes even going with baked details on flat surfaces.
-<br>
+<br><br>
 In **Cities skylines**, we don't have that luxury, as it is a wild west. Players subscribe to a lot of buildings, props, vegetation, etc, and place them wherever they want on their map, and that creates a pretty much unoptimized scene as there is no limitation. Understand that for each of those meshes, **the CPU must do draw calls which are expensive**.
-<br>
+<br><br>
 So it is important to be **mindful** about your triangle/vertex count but I would say you shouldn’t be obsessed by it. Find proper balance between what has to be modeled and what can be faked on the normal map or diffuse and try to be on the lower side.
 
 ## Part II
