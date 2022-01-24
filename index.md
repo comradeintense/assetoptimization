@@ -1,8 +1,7 @@
 ---
 layout: default
 ---
-# Contents
-{:.no_toc}
+#  Tips and tricks regarding performance and optimization for Cities Skylines Assets
 
 ## Part I
 ### Intro
