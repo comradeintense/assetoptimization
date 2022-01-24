@@ -8,7 +8,7 @@ Greetings! I am “**ComradeIntense**” and I am here to show you a couple of t
 
 What you will read further on, are things that I learned on my own in this journey, or things that have been taught to me by others (mostly my mentor -  **Ronyx69**) or at work, and I just want to pass the knowledge to others as well. If there is something you disagree with in this guide, don’t hesitate to contact and correct me, I am learning as well.
 
-This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info), but you are here because you are interested in knowing how your decisions affect the performance of the game for others, and what can you do about it.
+This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info), but you are here because you are interested in knowing **how your decisions affect the performance of the game for others, and what can you do about it**.
 
 I will write short and to the point as much as I can, but there will be a few nerdy parts here and there, which are important for you to understand, so take your time and don’t skip anything.
 
@@ -31,6 +31,8 @@ Problems arise when there is a bottleneck. For example you have a very powerful 
 The CPU has to calculate all of that for each single mesh (and a draw call for each material) and give instructions to the GPU of what to render on your screen. The bottleneck arises in the fact that the GPU can handle all this without issues, but the CPU will start lagging behind, resulting in idle times in the GPU where it doesn't do anything. 
 
 Here is a good image to describe that:
+
+!(images/1.png)
 
 Based on this you can already kinda understand why the game is running with 10fps lol. There are a lot of meshes on the screen, each mesh having its own material, and the CPU has to calculate all of that, constantly, and send all the info to the GPU to render it. When you think about it, it's quite magical that we can play this game, and it is absolutely insane the brute power of the CPU and GPU nowadays.
 
