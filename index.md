@@ -177,7 +177,7 @@ What you should **never do**, is to use textures which are not powers of 2.
 <br><br>
 You might say: “**But I never had problems with that**”
 <br><br>
-There are two important things to keep in mind:
+There are two important things to keep in mind:<br>
 **A) Compression**<br>
 When you save your texture file and you load up the asset editor, the game engine will convert your texture to DXT format which is a compressed texture format, DXT being the compression algorithm. The compression cannot happen if your texture is not divisible by 32, so stick to the numbers above.
 <br><br>
@@ -189,7 +189,7 @@ Here is an example of a mip map chain:
 ![mm](images/mm.png)
 
 This happens automatically by the game engine, you don't have to do anything.
-<br>
+<br><br>
 **So how does this relate to power of 2?**
 Now here is the thing. If you don't use a power of 2 texture, your texture can get corrupted by compression and it is visible at longer distances or when you look at the mesh from an angle. The texture will still work and you will see it on your model, but there are issues behind it.
 <br>
