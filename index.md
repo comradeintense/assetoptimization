@@ -33,7 +33,7 @@ Let’s go.
 In simple terms, a draw call is an instruction that the CPU tells the GPU to do. When you load a mesh, the CPU will calculate the position of **each vertex** of the mesh in the world space and the material(s), after which it says to the GPU:
 
 ```"Hey almighty 1050 GPU, at position (x,y,z) in the world, there is a vertex, also here and here and here, and all of those vertices make this entire mesh. Between those vertices you need to apply this material at this position on the UV map, and normal map and so on... and draw it on the screen!”```
-_ ~Discussion between CPU and GPU (This is obviously a very simple explanation)_.
+ _Discussion between CPU and GPU (This is obviously a very simple explanation)_.
 
 Naturally, it makes sense that **the more vertices that need to be calculated or the more draw calls from a lot of meshes = more processing time.**
 
