@@ -3,8 +3,7 @@ layout: default
 ---
 #  Tips and tricks regarding performance and optimization for Cities Skylines Assets
 
-## Part I
-### Intro
+## Intro
 Greetings! I am “**ComradeIntense**” and I am here to show you a couple of tips and tricks on how to better optimize in terms of performance your assets for **Cities Skylines**.  
 
 What you will read further on, are things that I learned on my own in this journey, or things that have been taught to me by others (mostly my mentor -  **Ronyx69**) or at work, and I just want to pass the knowledge to others as well. If there is something you disagree with in this guide, don’t hesitate to contact and correct me, I am learning as well.
@@ -15,6 +14,7 @@ I will write short and to the point as much as I can, but there will be a few ne
 
 Let’s go.
 
+## Part I
 
 ### 1) What are draw calls?
 
