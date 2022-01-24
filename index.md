@@ -192,9 +192,9 @@ This happens automatically by the game engine, you don't have to do anything.
 <br><br>
 **So how does this relate to power of 2?**
 Now here is the thing. If you don't use a power of 2 texture, your texture can get corrupted by compression and it is visible at longer distances or when you look at the mesh from an angle. The texture will still work and you will see it on your model, but there are issues behind it.
-<br>
+<br><br>
 Another thing is, in some game engines, for example Unreal Engine, mip mapping doesn't even occur if you don't use a power of 2 texture. Unity engine (the one **Cities Skylines** uses) has a different workaround. 
-<br>
+<br><br>
 The engine let's you use non-power of two textures, but those take **more memory and are slower to read by the GPU**, because the engine forces mip maps, and to do that it scales and pads your texture to the next power of 2, so for performance reasons **always stick to power of 2** on your texture resolution.
 
 ### 9) Texture size
