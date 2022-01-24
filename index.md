@@ -39,7 +39,7 @@ Based on this you can already kinda understand why the game is running with 10fp
 
 Now that you understand what a draw call is, let’s discuss the big topic: triangles count. First thing to understand is that a **vertex** is more important than triangles, because those are the ones that get calculated, but since 3 verts form a triangle, you can’t “ignore” triangles from the discussion.
 <br><br>
-Whenever you model an asset keep this in mind:<br><br>
+**Whenever you model an asset keep this in mind:**<br><br>
 fewer triangles = increased performance<br><br>
 fewer triangles = fewer vertices that need to be calculated by the GPU<br><br>
 calculating/processing vertices is **expensive**.<br><br>
@@ -64,14 +64,14 @@ So it is important to be **mindful** about your triangle/vertex count but I woul
 
 In games there is a world origin point which is x,y,z = 0,0,0. From there, all the vertices that form meshes get calculated relative to the world origin. Sometimes, game developers calculate the position of vertices relative to the camera, or sometimes they just shift the world origin. I have no idea how Cities Skylines does it (probably center of map is (0,0,0)), but that's irrelevant, just bear with me.
 
-![worldorigin](images/vertexloss.png)
+![worldorigin](images/vertexloss.jpg)
 
 When I talked in **Part I** that when a draw call is made for a mesh, what happens is that each vertex is calculated in the world space, aka where it is positioned in space, relative to 0,0,0 (world origin), and then it is sent to the GPU to draw it on your screen.
-<br>
+<br><br>
 All the information about each vertex position is stored in a 32 bit float container and it is called a “**floating point**”. (Don't get scared, that's the only nerdy part i'll talk about). The idea with floating points is that **they are precise only to a certain point**.
-<br>
+<br><br>
 The further away the vertices need to be calculated from the world origin (0,0,0), the more prone to error the mesh is, because the CPU cannot calculate t**he exact vertex position precisely**, and vertices will start losing precision, but the disconnected ones will cause visible issues.
-<br>
+<br><br>
 In our case, the vertex in the middle of our mesh is **not connected to anything**. The CPU will keep trying to calculate it's exact position but after a while it will start losing precision. When that happens (an exaggerated example) can be seen here:
 
 ![vert2](images/vert2.png)
@@ -79,41 +79,41 @@ In our case, the vertex in the middle of our mesh is **not connected to anything
 ![vert3](images/vert3.png)
 
 Since the vertex is not connected to anything else, it will start making holes in the mesh and that will turn into different shading problems / holes where light pokes through / bad artefacts and all kinds of other weird glitches.
-<br>
+<br><br>
 **So how to fix this?**
 You must have your mesh "closed" so to speak. In our case, that vertex should be connected somewhere, for example like this:
 
 ![vert4](images/vert4.png)
 
 Now even with the precision loss, the mesh is still connected, and at worst, the vertex will just shift it’s position a tiny tiny tiny bit, but there won't be any **visible** errors at all.
-<br>
+<br><br>
 If however there is no possible way for you to connect the vertices, you can just overlap the vertex a tiny bit with the face next to it like this:
 
 ![vert5](images/vert5.png)
 
 (Exaggerated example, but I moved the vertex to the right, to overlap the face next to it). It is not an ideal solution and you should do this only if you have the same texture, so the overlapped faces won't Z-fight and create annoying flickering.
-<br>
+<br><br>
 So, you should keep your vertices connected, even if it increases the amount of triangles. Also, make sure to merge your vertices.
-<br>
+<br><br>
 As a bonus to further drill this idea inside your brain, check this video [https://youtu.be/Xfh3oTIqJW8?t=305](https://youtu.be/Xfh3oTIqJW8?t=305) from the game **Minecraft**, when it was in an old version. The guy was testing what happens if you teleport further and further away from the world origin.
 Because he was sooooooooo far away from the world origin, the blocks couldn't be rendered properly anymore (the cpu was having a hard time figuring out the exact position of each of the 4 vertices that make a block) and you can clearly see how bad it gets. I don't know the exact solution to how Minecraft fixed this, but most likely the world origin is shifted constantly (my guess).
 
 ### 6) Overdraw
 
 Overdraw in games is generally seen as the silent killer and can quickly ruin the performance of a game if it's not optimized. So what is it?
-<br>
+<br><br>
 To put it simply, overdraw is when the gpu has to render overlapping pixels aka **over - drawing**, which **takes time, memory and performance**. The purpose of your mighty GPU is to render the scene you look at, and put that image on your screen. And fast!
-<br>
+<br><br>
 I promised I won't get into technical things (even though Overdraw is quite interesting to understand), but I will give you an extremely simplified version so you understand it better.
-<br>
+<br><br>
 Here is a great example:
 
 ![overdraw](images/overdraw.png)
 
 In this image (imagine this is a 3d rendered scene), the CPU would make draw calls for the environment ( the couple in the back ), and draw calls for the glasses. After that, the GPU has to render the pixels on your screen, and to do that, it would take a lot of time to render BOTH the couple AND the glass lens (overlapping pixels on the right lens of the glasses).
-<br>
+<br><br>
 **So what can you do about overdraw?**
-<br>
+<br><br>
 Imagine you have this scenario, where you have this building which is made with two 'shapes', the tall one, and then the long one that goes through the main tall one. To avoid making a lot of cuts and saving on triangles, you decide to go through the main building like this:
 
 ![ov1](images/ov1.png)
@@ -123,7 +123,7 @@ Seen from below:
 ![ov2](images/ov2.jpg)
 
 In this case, the red and blue area on both buildings are OVERDRAWN, and **you must cut them out because of overdraw**. Basically, the GPU has to render those pixels (which you will never see), marked in red from the tall building and blue from the main building.
-<br>
+<br><br>
 To avoid overdraw, you should cut your model like this, by cutting out the big area which the camera doesn't see, and preventing the GPU to work more than needed:
 
 ![ov3](images/ov3.png)
@@ -135,16 +135,16 @@ Exploded view for better understanding:
 _(This is just an example specifically to describe overdraw. The mesh is not properly triangulated, and there are a lot of Ngons)_
 
 Main takeaway: **don't make the GPU render pixels which are not seen to the camera!**
-<br>
+<br><br>
 Another example to illustrate the overdraw. You have this image of a sword and you will add it in a game. 
 
 ![ov5](images/ov5.png)
 
 **What would be better ?**
 To go with **Fig1** where you have only 2 triangles or go with **Fig2** where you have 13 triangles ? In the image, the red part is alpha, transparent.
-<br>
+<br><br>
 If you understood everything so far, the clear answer is figure 2. The increase in triangles doesn't matter, what you absolutely want however, is to reduce the overdraw! Even though the pixels in the red area are transparent, they are "there" so to speak. The CPU will do a draw call for that shape and the GPU will STILL calculate them, just that they will be turned invisible. Waste of time and memory bandwidth.
-<br>
+<br><br>
 _Please note that this last image was just an example to better illustrate overdraw. You shouldn’t do this for very tiny faces with alpha in Cities Skylines._
 
 (**correction**: it's actually 15 tris in FIG2, I forgot to triangulate # 5)
@@ -152,13 +152,13 @@ _Please note that this last image was just an example to better illustrate overd
 ### 7) Overshading
 
 The close relative of Overdraw is **overshading**, and again, it is a performance culprit. The cause of overshading are thin triangles which you should avoid as much as possible, because **the GPU processes pixels in blocks of four pixels arranged in a 2x2 pattern**. So if a triangle touches just a tiny bit a single pixel of a 2x2 quad, the GPU will process the whole quad and just throw away the other 3 pixels, which is **75% wasted work**. If you do this plenty of times, it adds up quickly.
-<br>
+<br><br>
 Here is an explanation:
 
 ![overshade](images/overshading.jpg)
 
 On a building I did some time ago, I had this dilemma. I wanted to save on triangles so I merged all the vertices on the top and bottom (the most right side face). Technically, you won't see any issues with this ingame. However, you are making the GPU work harder for something which can be simplified by adding a few extra cuts. Sure, the cost will be more triangles, but as already explained it doesn't matter that much compared to the wasted work the GPU has to put in.
-<br>
+<br><br>
 Here is the building and to clean it up I came with this solution, and everything is connected properly (before and after):
 
 ![tr1](images/tr1.png)
@@ -172,18 +172,18 @@ An argument can be made about the fact that modern GPUs are insanely fast at cal
 ### 8) Power of 2 on textures
 
 There has always been some debate about using power of 2 on textures, aka 32 (smallest), 64, 128, 256, 512, 1024, 2048, 4096 (very big). A texture can be any ratio, it doesn't have to be square, for example: 256x2048 is perfectly fine.
-<br>
+<br><br>
 What you should **never do**, is to use textures which are not powers of 2.
-<br>
+<br><br>
 You might say: “**But I never had problems with that**”
-<br>
+<br><br>
 There are two important things to keep in mind:
 **A) Compression**<br>
 When you save your texture file and you load up the asset editor, the game engine will convert your texture to DXT format which is a compressed texture format, DXT being the compression algorithm. The compression cannot happen if your texture is not divisible by 32, so stick to the numbers above.
-<br>
+<br><br>
 **B) MipMaps**<br>
 When the textures get loaded, the game engine generates mip maps for those textures. A mip map is exactly LOD for textures, and those are copies of your original texture that get saved at lower resolutions. When the mesh is further away from the camera, the lower resolution texture will be applied, and it will keep shrinking down, the further away you move your camera. Same goes the other way, as you move closer, you will see larger texture sizes, all the way to original size.
-<br>
+<br><br>
 Here is an example of a mip map chain:
 
 ![mm](images/mm.png)
@@ -200,12 +200,12 @@ The engine let's you use non-power of two textures, but those take **more memory
 ### 9) Texture size
 
 At the end of the guide, let’s discuss texture sizes, as this is again, a performance hog like all the others. The larger the image resolution size, the more memory (VRAM in your GPU) it will use when trying to render it on the screen.
-<br>
+<br><br>
 **Let me first explain to you a few things:**
 Whenever you save the textures that you do as PNG on your hard drive, that size in kilobytes or megabytes doesn’t matter, as the textures will get compressed through DXT when imported ingame, DXT being a compression format.
-<br>
+<br><br>
 Also a thing to point out is that the memory usage is not dependent on how complex or detailed the texture is.
-<br>
+<br><br>
 **The only thing that matters is the resolution size so you should strive to make this as low as possible while keeping some nice detail.**
 <br>
 As explained in the previous chapter, in **Cities Skylines**, DXT will compress the textures for efficient storage in the following way:<br>
