@@ -32,7 +32,7 @@ The CPU has to calculate all of that for each single mesh (and a draw call for e
 
 Here is a good image to describe that:
 
-!(images/1.png)
+![bottleneck](images/1.png)
 
 Based on this you can already kinda understand why the game is running with 10fps lol. There are a lot of meshes on the screen, each mesh having its own material, and the CPU has to calculate all of that, constantly, and send all the info to the GPU to render it. When you think about it, it's quite magical that we can play this game, and it is absolutely insane the brute power of the CPU and GPU nowadays.
 
