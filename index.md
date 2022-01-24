@@ -38,12 +38,12 @@ Based on this you can already kinda understand why the game is running with 10fp
 ### 2) Do # of Triangles (Tris) matter?
 
 Now that you understand what a draw call is, let’s discuss the big topic: triangles count. First thing to understand is that a **vertex** is more important than triangles, because those are the ones that get calculated, but since 3 verts form a triangle, you can’t “ignore” triangles from the discussion.
-<br>
-Whenever you model an asset keep this in mind:<br>
-fewer triangles = increased performance<br>
-fewer triangles = fewer vertices that need to be calculated by the GPU<br>
-calculating/processing vertices is **expensive**.<br>
-<br>
+<br><br>
+Whenever you model an asset keep this in mind:<br><br>
+fewer triangles = increased performance<br><br>
+fewer triangles = fewer vertices that need to be calculated by the GPU<br><br>
+calculating/processing vertices is **expensive**.<br><br>
+<br><br>
 Realistically speaking, modern GPUs can render scenes with thousands of triangles without many issues (explained a bit in next topic), however that shouldn’t give you an excuse to model everything, every single little detail, because you have to see the big picture: if everyone is ignoring that, the performance hit would be quite significant, so whenever you model something, try to keep the tris count on the lower end and **don’t use more triangles than necessary**.
 <br>
 **Ronyx69** said it well: _“It doesn’t matter that your asset is 5k or 25k tris, -**in isolation by itself**-, but you are a drop in the ocean together with all other assets. Since there's hundreds of assets on screen, 1k tris here or there for each asset would make a difference”._
