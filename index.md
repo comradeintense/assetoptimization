@@ -8,7 +8,7 @@ Greetings! I am “**ComradeIntense**” and I am here to show you a couple of t
 
 What you will read further on, are things that I learned on my own in this journey, or things that have been taught to me by others (mostly my mentor -  **Ronyx69**) or at work, and I just want to pass the knowledge to others as well. If there is something you disagree with in this guide, don’t hesitate to contact and correct me, I am learning as well.
 
-This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info), but you are here because you are interested in knowing **how your decisions affect the performance of the game for others, and what can you do about it**.
+This little guide assumes you already know how to make assets (a good resource is Ronyx’s website: [http://cslmodding.info](https://cslmodding.info)), but you are here because you are interested in knowing **how your decisions affect the performance of the game for others, and what can you do about it**.
 
 I will write short and to the point as much as I can, but there will be a few nerdy parts here and there, which are important for you to understand, so take your time and don’t skip anything.
 
