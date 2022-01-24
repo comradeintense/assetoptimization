@@ -15,7 +15,9 @@ I will write short and to the point as much as I can, but there will be a few ne
 
 Let’s go.
 
+
 ### 1) What are draw calls?
+
 
 In simple terms, a draw call is an instruction that the CPU tells the GPU to do. When you load a mesh, the CPU will calculate the position of **each vertex** of the mesh in the world space and the material(s), after which it says to the GPU:
 
