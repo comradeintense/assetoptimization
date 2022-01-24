@@ -163,7 +163,9 @@ Here is an explanation:
 On a building I did some time ago, I had this dilemma. I wanted to save on triangles so I merged all the vertices on the top and bottom (the most right side face). Technically, you won't see any issues with this ingame. However, you are making the GPU work harder for something which can be simplified by adding a few extra cuts. Sure, the cost will be more triangles, but as already explained it doesn't matter that much compared to the wasted work the GPU has to put in.
 
 Here is the building and to clean it up I came with this solution, and everything is connected properly (before and after):
+
 ![tr1](images/tr1.png)
+
 ![tr2](images/tr2.png)
 
 An argument can be made about the fact that modern GPUs are insanely fast at calculating this, however, I see it as **sweeping dirt under the rug**. It literally takes very few minutes to come up with a better topology and solve this issue, so as much as possible try to avoid having on your mesh long thin triangles.
