@@ -18,10 +18,9 @@ layout: default
 
 ### 1) What are draw calls?
 
-In simple terms, a draw call is an instruction that the CPU tells the GPU to do. When you load a mesh, the CPU will calculate the position of **each vertex** of the mesh in the world space and the material(s), after which it says to the GPU:  
-<br>
-```"Hey almighty 1050 GPU, at position (x,y,z) in the world, there is a vertex, also here and here and here, and all of those vertices make this entire mesh. Between those vertices you need to apply this material at this position on the UV map, and normal map and so on... and draw it on the screen!”```  
- _Discussion between CPU and GPU (This is obviously a very simple explanation)_.  
+簡単に言うと、ドローコールとは、CPUがGPUに指示する命令のことです。メッシュをロードすると、CPU はメッシュの各頂点のワールド空間での位置とマテリアル（複数）を計算し、その後 GPU に指示します。
+```"こんにちは、GPU です。ワールドの (x,y,z) の位置には頂点があり、こことこことここにも頂点があり、そのすべての頂点がこのメッシュ全体を構成しています。これらの頂点の間に、この位置にこのマテリアルを UV マップや法線マップなどに適用して、画面に描画する必要があるのです!”```  
+ _CPUとGPUの議論（これは当然ながら非常に簡単な説明です)_.  
 <br>
 Naturally, it makes sense that **the more vertices that need to be calculated or the more draw calls from a lot of meshes = more processing time.**  
 <br>
