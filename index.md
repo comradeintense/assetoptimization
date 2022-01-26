@@ -2,10 +2,7 @@
 layout: default
 ---
 #  Tips and tricks regarding performance and optimization for Cities Skylines Assets
-<li>
- <span class="flag-icon flag-icon-jpn"><span>
- </li>
-  
+
 ## Intro
 Greetings! I am “**ComradeIntense**” and I am here to show you a couple of tips and tricks on how to better optimize in terms of performance your assets for **Cities Skylines**.  
 <br>
