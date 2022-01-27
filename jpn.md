@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-#  Tips and tricks regarding performance and optimization for Cities Skylines Assets
+#  Cities Skylines Assetsのパフォーマンスと最適化に関するヒントとテクニック
 
 [<img src="images/usa.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/)<br>
 
