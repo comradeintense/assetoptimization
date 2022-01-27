@@ -3,9 +3,12 @@ layout: default
 ---
 #  Tips and tricks regarding performance and optimization for Cities Skylines Assets
 
-[<img src="images/usa.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/)
+[<img src="images/usa.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/)<br>
 
 ## Intro
+
+```このウェブサイトは、Deepl Translatorを使用して英語から翻訳されています。読みやすく、理解できるかどうかはわかりません。翻訳にご協力いただける方は、ご連絡ください。```
+<br><br>
 はじめまして。私は「**ComradeIntense**」です。今回は、**Cities Skylines**のアセットをパフォーマンス面でより良く最適化する方法について、いくつかのヒントとトリックをご紹介します。 
 <br>
 この先は、私がこの旅で独学で学んだこと、または他の人（主に私の先生 - **Ronyx69**）や仕事場で教えてもらったことであり、私はただ他の人にも知識を伝えたいと思うだけです。このガイドに同意できないことがあれば、遠慮なくご連絡いただき、訂正してください。 
