@@ -4,9 +4,10 @@ layout: default
 #  Tips and tricks regarding performance and optimization for Cities Skylines Assets
 
 [<img src="images/usa.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/)<br>
-#### English version
-## Intro
 
+#### ENG version
+
+## Intro
 ```このウェブサイトは、Deepl Translatorを使用して英語から翻訳されています。読みやすく、理解できるかどうかはわかりません。翻訳にご協力いただける方は、ご連絡ください。```
 <br><br>
 はじめまして。私は「**ComradeIntense**」です。今回は、**Cities Skylines**のアセットをパフォーマンス面でより良く最適化する方法について、いくつかのヒントとトリックをご紹介します。 
