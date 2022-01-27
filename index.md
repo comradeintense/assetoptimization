@@ -4,7 +4,8 @@ layout: default
 #  Tips and tricks regarding performance and optimization for Cities Skylines Assets
 
 [<img src="images/jpn.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/jpn.html)
-
+<br>
+#### JPN version
 ## Intro
 Greetings! I am “**ComradeIntense**” and I am here to show you a couple of tips and tricks on how to better optimize in terms of performance your assets for **Cities Skylines**.  
 <br>
