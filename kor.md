@@ -3,9 +3,6 @@ layout: default
 ---
 #  시티즈 스카이라인 에셋의 성능과 최적화에 관한 팁과 트릭
 
-[<img src="images/jpn.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/jpn.html)
-<br>
-#### JPN version
 ## 인트로
 반갑습니다! 저는 “**ComradeIntense**”이며 성능 측면에서 당신의 **시티즈 스카이라인**의 에셋을 더 잘 최적화하는 방법에 대한 몇 가지 팁과 트릭을 보여드리기 위해 여기에 있습니다.
 <br>
