@@ -6,6 +6,11 @@ layout: default
 [<img src="images/jpn.svg" width=40 height=30>](http://comradeintense.github.io/assetoptimization/jpn.html)
 <br>
 #### JPN version
+[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png" width=40 height=30>](http://comradeintense.github.io/assetoptimization/kor.html)
+<br>
+#### KOR version
+
+
 ## Intro
 Greetings! I am “**ComradeIntense**” and I am here to show you a couple of tips and tricks on how to better optimize in terms of performance your assets for **Cities Skylines**.  
 <br>
